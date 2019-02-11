@@ -13,19 +13,29 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/zyaf2019app",
+            "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/static/images"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/static/css/base.css",
+              "src/static/css/vendor.css",
+              "src/static/css/main.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/static/js/modernizr.js",
+              "src/static/js/pace.min.js",
+              "src/static/js/jquery-2.1.3.min.js",
+              "src/static/js/plugins.js",
+              "src/static/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -91,6 +101,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "src/tsconfig.server.json"
           }
         }
       }
