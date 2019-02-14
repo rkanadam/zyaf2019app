@@ -1329,7 +1329,7 @@ header .header-logo a {
   right: 9px;
   margin-top: -1.5px;
 }
-#header-menu-trigger .header-menu-icon::before, 
+#header-menu-trigger .header-menu-icon::before,
 #header-menu-trigger .header-menu-icon::after {
   content: '';
   width: 100%;
@@ -1405,7 +1405,7 @@ header .header-logo a {
   color: rgba(255, 255, 255, 0.25);
   display: block;
 }
-#menu-nav-wrap .nav-list li a:hover, 
+#menu-nav-wrap .nav-list li a:hover,
 #menu-nav-wrap .nav-list li a:focus {
   color: white;
 }
@@ -1423,7 +1423,7 @@ header .header-logo a {
 #menu-nav-wrap .header-social-list li a {
   color: rgba(255, 255, 255, 0.15);
 }
-#menu-nav-wrap .header-social-list li a:hover, 
+#menu-nav-wrap .header-social-list li a:hover,
 #menu-nav-wrap .header-social-list li a:focus {
   color: white;
 }
@@ -1443,7 +1443,7 @@ header .header-logo a {
   text-shadow: none;
   color: transparent;
 }
-#menu-nav-wrap .close-button span::before, 
+#menu-nav-wrap .close-button span::before,
 #menu-nav-wrap .close-button span::after {
   content: "";
   display: block;
@@ -1597,8 +1597,8 @@ header .header-logo a {
 .home-social-list li a, .home-social-list li a:visited {
   color: #FFFFFF;
 }
-.home-social-list li a:hover, 
-.home-social-list li a:focus, 
+.home-social-list li a:hover,
+.home-social-list li a:focus,
 .home-social-list li a:active {
   color: #151515;
 }
@@ -2025,7 +2025,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
 #portfolio .portfolio-content {
   margin-top: -22.2rem;
 }
-#portfolio .bricks-wrapper:before, 
+#portfolio .bricks-wrapper:before,
 #portfolio .bricks-wrapper:after {
   content: "";
   display: table;
@@ -2759,7 +2759,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
     transform: scale(1);
   }
 }
-/* ------------------------------------------------------------------- 
+/* -------------------------------------------------------------------
  * responsive:
  * contact 
  * ------------------------------------------------------------------- */
@@ -2993,3 +2993,20 @@ footer h4.h05::after {
     display: none;
   }
 }
+
+.points {
+  color: #fff;
+  font-size: 1.5rem !important;
+}
+
+.points:before {
+  font-size: 1.5rem !important;
+  font-family: 'icomoon' !important;
+  content: "\e999" !important;
+  padding-right: 0.25rem;
+}
+.points:after {
+  content: "KARMA POINTS" !important;
+  padding-left: 0.25rem;
+}
+
