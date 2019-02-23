@@ -1,12 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <div id="google-signin" class="g-signin2"></div>
+  <div class="row justify-content-center">
+    <div id="google-signin" class="g-signin2"></div>
+  </div>
   <div *ngFor="let stat of myStats">
     <div>
-      <span>{{stat["NAME"]}}</span> | <span class="points">{{stat["SUM"]}}</span> | <button
-      (click)='sadhanaPerformed(stat["SADHANA_ID"])'>I
-      did my
-      Sadhana!</button>
+      <span>{{stat["NAME"]}}</span> | <span class="points">{{stat["SUM"]}}</span> |
+      <button
+        (click)='sadhanaPerformed(stat["SADHANA_ID"])'>I
+        did my
+        Sadhana!
+      </button>
     </div>
   </div>
 </div>
