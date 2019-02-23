@@ -1,9 +1,10 @@
 import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {mergeMap} from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material';
 
 declare const gapi: any;
-const baseURL = '/zyaf2019api';
+const baseURL = 'http://localhost:3000';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ const baseURL = '/zyaf2019api';
 export class AppComponent implements AfterViewInit {
   myStats = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {
   }
 
   ngAfterViewInit() {
@@ -61,6 +62,7 @@ export class AppComponent implements AfterViewInit {
         mergeMap(stats => this.http.get(`${baseURL}/my/sadhanas/stats`, {withCredentials: true})))
       .subscribe((stats: any[]) => {
         this.myStats = stats;
+        this.snackBar.open(`One step! One step at a time`);
       });
   }
 
@@ -75,6 +77,7 @@ export class AppComponent implements AfterViewInit {
         mergeMap(stats => this.http.get(`${baseURL}/my/sadhanas/stats`, {withCredentials: true})))
       .subscribe((stats: any[]) => {
         this.myStats = stats;
+        this.snackBar.open(`Got it! Quality is better than quantity`);
       });
   }
 
@@ -93,6 +96,7 @@ export class AppComponent implements AfterViewInit {
         mergeMap(stats => this.http.get(`${baseURL}/my/sadhanas/stats`, {withCredentials: true})))
       .subscribe((stats: any[]) => {
         this.myStats = Object.assign([], stats);
+        this.snackBar.open(`Whee hoo! Say Sairam!`);
       });
   }
 }
