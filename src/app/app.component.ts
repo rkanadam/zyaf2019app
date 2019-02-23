@@ -4,7 +4,7 @@ import {mergeMap} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material';
 
 declare const gapi: any;
-const baseURL = 'http://localhost:3000';
+const baseURL = '/zyaf2019api';
 
 @Component({
   selector: 'app-root',
