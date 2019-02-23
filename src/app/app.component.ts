@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {mergeMap} from 'rxjs/operators';
 
 declare const gapi: any;
-const baseURL = '';
+const baseURL = '/zyaf2019api';
 
 @Component({
   selector: 'app-root',
