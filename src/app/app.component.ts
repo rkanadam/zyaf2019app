@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {mergeMap} from 'rxjs/operators';
 
 declare const gapi: any;
-const baseURL = 'http://localhost:3000';
+const baseURL = '';
 
 @Component({
   selector: 'app-root',
