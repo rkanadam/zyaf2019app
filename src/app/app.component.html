@@ -1,0 +1,63 @@
+<mat-card>
+  <div class="g-signin2" id="google-signin" data-onsuccess="onSignIn"></div>
+</mat-card>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>TOP SADHAKAS</mat-card-title>
+  </mat-card-header>
+  <table mat-table [dataSource]="topSadhakas" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>SADHAKA</th>
+      <td mat-cell *matCellDef="let element">
+        {{formatNameForTopSadhakasTable(element)}}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="points">
+      <th mat-header-cell *matHeaderCellDef>POINTS</th>
+      <td mat-cell *matCellDef="let element"> {{element.POINTS}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="summaryColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: summaryColumns;"></tr>
+  </table>
+</mat-card>
+<br/>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>SADHANAS</mat-card-title>
+  </mat-card-header>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <table mat-table [dataSource]="sadhanas" class="mat-elevation-z8">
+    <ng-container matColumnDef="subscribed">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox (change)="toggleSadhana(element,$event.checked)" [checked]="isSadhanaSubscribedTo(element)">&nbsp;
+        </mat-checkbox>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>SADHANA</th>
+      <td mat-cell *matCellDef="let element">
+        {{element.NAME}}
+        <span *ngIf="element.EMAIL" style="padding: 1em">
+        <button mat-raised-button color="primary" (click)="sadhanaPerformed(element.ROWID)">DID MY SADHANA</button>
+      </span>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>CATEGORY</th>
+      <td mat-cell *matCellDef="let element"> {{element.CATEGORY}} </td>
+    </ng-container>
+    <ng-container matColumnDef="points">
+      <th mat-header-cell *matHeaderCellDef>POINTS</th>
+      <td mat-cell *matCellDef="let element"> {{element.POINTS}} </td>
+    </ng-container>
+    <ng-container matColumnDef="myPoints">
+      <th mat-header-cell *matHeaderCellDef>MY POINTS</th>
+      <td mat-cell *matCellDef="let element"> {{element.COUNT * element.POINTS}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>
