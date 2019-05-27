@@ -66,6 +66,26 @@ export class AppComponent implements AfterViewInit {
       );
   }
 
+  private categoryToHref(category?: string) {
+    category = (category || '').toLowerCase().replace(/\s/g, '');
+    switch (category) {
+      case 'dailyprayersandmeditation':
+        return '#dailyPrayersAndMeditation';
+      case 'healthyliving':
+        return '#healthyLiving';
+      case 'servicetoothers':
+        return '#serviceToOthers';
+      case 'gogreen':
+        return '#goGreen';
+      case 'ceilingondesires':
+        return '#cod';
+      case 'sailiterature':
+        return '#saiLiterature';
+      default:
+        return '#app';
+    }
+  }
+
 
   private subcribeToSadhana(sadhanaId: string) {
     this.http
