@@ -1,11 +1,11 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {flatMap, map, mergeMap} from 'rxjs/operators';
-import {MatSnackBar, MatTableDataSource} from '@angular/material';
+import {flatMap, map, mergeMap, tap} from 'rxjs/operators';
+import {MatSnackBar, MatTable, MatTableDataSource} from '@angular/material';
 
 declare const gapi: any;
 // const baseURL = 'http://localhost:3000';
-const baseURL = '/zyaf2019api';
+const baseURL = 'https://slides.ssbcsj.org/zyaf2019api';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +17,7 @@ export class AppComponent implements AfterViewInit {
   sadhanas = new MatTableDataSource();
   displayedColumns: string[] = ['subscribed', 'category', 'name', 'myPoints', 'points'];
   summaryColumns: string[] = ['name', 'points'];
+  wereColumnsRendered = false;
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {
   }
@@ -53,6 +54,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   private fetchSadhanas() {
+    this.wereColumnsRendered = false; // this is a terrible hack, however I'm crazy short on time.
     return this.http.get(`${baseURL}/sadhanas`, {withCredentials: true})
       .pipe(
         map((sadhanas: any[]) => {
@@ -64,10 +66,18 @@ export class AppComponent implements AfterViewInit {
         map((topSadhakas: any[]) => {
           this.topSadhakas.data = topSadhakas;
         }),
+        tap(() => {
+          window.setTimeout(() => {
+            if (!this.wereColumnsRendered) {
+              window.location.reload(true);
+            }
+          }, 2000);
+        })
       );
   }
 
   private categoryToHref(category?: string) {
+    this.wereColumnsRendered = true;
     category = (category || '').toLowerCase().replace(/\s/g, '');
     switch (category) {
       case 'dailyprayersandmeditation':
